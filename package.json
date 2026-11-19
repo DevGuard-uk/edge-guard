@@ -1,0 +1,20 @@
+{
+  "name": "@devguard/edge-guard",
+  "version": "1.0.0",
+  "description": "DevGuard Edge Guard for Cloudflare Workers, Vercel Edge, and Web Standards Fetch runtimes",
+  "main": "index.js",
+  "types": "index.d.ts",
+  "exports": {
+    ".": "./index.js"
+  },
+  "keywords": [
+    "devguard",
+    "cloudflare-worker",
+    "edge",
+    "licensing",
+    "security",
+    "middleware"
+  ],
+  "author": "DevGuard",
+  "license": "MIT"
+}

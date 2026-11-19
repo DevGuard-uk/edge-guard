@@ -1,0 +1,20 @@
+# Wrangler configuration example for deploying DevGuard Edge Guard on Cloudflare Workers
+name = "my-site-edge-guard"
+main = "worker.js"
+compatibility_date = "2024-01-01"
+compatibility_flags = ["nodejs_compat"]
+
+# Environment variables accessible via env in your Worker fetch handler
+[vars]
+DEVGUARD_PROJECT_ID = "dg-proj-sample-uuid"
+DEVGUARD_API_KEY = "dg_live_secret_key"
+DEVGUARD_API_URL = "https://api.devguard.uk"
+DEVGUARD_FAIL_SAFE = "open"
+DEVGUARD_CACHE_TTL_MS = "60000"
+DEVGUARD_TIMEOUT_MS = "2500"
+
+# Routes configuration (uncomment and replace with your domain)
+# routes = [
+#   { pattern = "client-domain.com/*", zone_name = "client-domain.com" },
+#   { pattern = "staging.client-domain.com/*", zone_name = "client-domain.com" }
+# ]
