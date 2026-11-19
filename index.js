@@ -1,5 +1,5 @@
 /**
- * @devguard/edge-guard
+ * @devguard-uk/edge-guard
  *
  * DevGuard Edge Guard for Cloudflare Workers, Vercel Edge, Deno, and Web Standards Fetch runtimes.
  * Enforces project licensing, milestone locks, and authorized domain matching at the network edge.

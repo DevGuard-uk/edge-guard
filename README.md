@@ -1,4 +1,4 @@
-# @devguard/edge-guard
+# @devguard-uk/edge-guard
 
 > **DevGuard Edge Guard** for Cloudflare Workers, Cloudflare Pages, Vercel Edge Middleware, Deno, Bun, and Web Standards Fetch runtimes.
 
@@ -22,7 +22,7 @@ Because agencies typically control or retain DNS delegation through Cloudflare o
 ## Installation
 
 ```bash
-npm install @devguard/edge-guard
+npm install @devguard-uk/edge-guard
 ```
 
 ---
@@ -34,7 +34,7 @@ npm install @devguard/edge-guard
 Create your worker (`worker.js`):
 
 ```javascript
-import { createEdgeGuard } from '@devguard/edge-guard';
+import { createEdgeGuard } from '@devguard-uk/edge-guard';
 
 let guard;
 
@@ -65,7 +65,7 @@ In `middleware.ts`:
 
 ```typescript
 import { NextRequest, NextResponse } from 'next/server';
-import { createEdgeGuard } from '@devguard/edge-guard';
+import { createEdgeGuard } from '@devguard-uk/edge-guard';
 
 const guard = createEdgeGuard({
   projectId: process.env.DEVGUARD_PROJECT_ID!,
