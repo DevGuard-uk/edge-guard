@@ -43,7 +43,8 @@ export default {
     if (!guard) {
       guard = createEdgeGuard({
         projectId: env.DEVGUARD_PROJECT_ID,
-        apiKey: env.DEVGUARD_API_KEY,
+        // Prefer project SDK key (Portal → Project SDK key). Falls back to DEVGUARD_API_KEY.
+        sdkKey: env.DEVGUARD_SDK_KEY,
         apiUrl: env.DEVGUARD_API_URL || 'https://api.devguard.uk',
         allowedDomains: ['example.com', '*.example.com', 'localhost'],
         failSafe: 'open',
@@ -69,7 +70,8 @@ import { createEdgeGuard } from '@devguard-uk/edge-guard';
 
 const guard = createEdgeGuard({
   projectId: process.env.DEVGUARD_PROJECT_ID!,
-  apiKey: process.env.DEVGUARD_API_KEY,
+  // Prefer project SDK key (Portal → Project SDK key). Falls back to DEVGUARD_API_KEY.
+  sdkKey: process.env.DEVGUARD_SDK_KEY,
   allowedDomains: ['myagency-staging.com', '*.myagency-staging.com'],
   failSafe: 'open',
 });
@@ -92,7 +94,8 @@ export async function middleware(request: NextRequest) {
 | Option | Type | Default | Description |
 |---|---|---|---|
 | `projectId` | `string` | **Required** | Your DevGuard project UUID / identifier. |
-| `apiKey` | `string` | `""` | Optional DevGuard secret API key or public token. |
+| `sdkKey` | `string` | `""` | Preferred project SDK key (`DEVGUARD_SDK_KEY` / Portal → Project SDK key). |
+| `apiKey` | `string` | `""` | Legacy API / Master Secret fallback when `sdkKey` is unset. |
 | `apiUrl` | `string` | `"https://api.devguard.uk"` | DevGuard API gateway endpoint. |
 | `failSafe` | `"open" \| "closed"` | `"open"` | Behavior if DevGuard API is unreachable or times out. |
 | `timeoutMs` | `number` | `2500` | Fetch timeout for status checks in milliseconds. |

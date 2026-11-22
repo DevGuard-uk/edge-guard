@@ -10,7 +10,12 @@ export interface EdgeGuardConfig {
   projectId: string;
 
   /**
-   * Optional DevGuard secret API key or public token.
+   * Project SDK key (preferred; dg_sdk_*). Wins over apiKey when both set.
+   */
+  sdkKey?: string;
+
+  /**
+   * Legacy API / Master Secret (fallback when sdkKey unset).
    */
   apiKey?: string;
 

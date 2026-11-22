@@ -1,6 +1,6 @@
 {
   "name": "@devguard-uk/edge-guard",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "DevGuard Edge Guard for Cloudflare Workers, Vercel Edge, and Web Standards Fetch runtimes",
   "main": "index.js",
   "types": "index.d.ts",

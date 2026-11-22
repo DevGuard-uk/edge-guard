@@ -297,7 +297,8 @@
    *
    * @param {object} config
    * @param {string} config.projectId DevGuard project UUID/id
-   * @param {string} [config.apiKey] Optional API secret token
+   * @param {string} [config.sdkKey] Project SDK key (preferred; dg_sdk_*)
+   * @param {string} [config.apiKey] Legacy API / Master Secret (fallback)
    * @param {string} [config.apiUrl="https://api.devguard.uk"] API endpoint
    * @param {"open"|"closed"} [config.failSafe="open"] Fail safe policy
    * @param {number} [config.timeoutMs=2500] API timeout in ms
@@ -312,9 +313,15 @@
       throw new Error('DevGuard Edge: config.projectId is required and must be a string');
     }
 
+    const resolvedKey = (
+      (typeof config.sdkKey === 'string' && config.sdkKey.trim()) ||
+      (typeof config.apiKey === 'string' && config.apiKey.trim()) ||
+      ''
+    );
+
     const cfg = {
       projectId: config.projectId.trim(),
-      apiKey: typeof config.apiKey === 'string' ? config.apiKey.trim() : '',
+      apiKey: resolvedKey,
       apiUrl: (typeof config.apiUrl === 'string' && config.apiUrl.trim() ? config.apiUrl.trim() : DEFAULT_API_URL).replace(/\/+$/, ''),
       failSafe: config.failSafe === 'closed' ? 'closed' : 'open',
       timeoutMs: typeof config.timeoutMs === 'number' && config.timeoutMs > 0 ? config.timeoutMs : DEFAULT_TIMEOUT_MS,
